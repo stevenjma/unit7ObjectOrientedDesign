@@ -1,23 +1,23 @@
 
 
 /**
- * Write a description of class IDCard here.
+ * Write a description of class Billfold here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class IDCard extends Card
+public class Billfold
 {
     /** description of instance variable x (add comment for each instance variable) */
-    private String idNumber;
+    private int x;
 
     /**
-     * Default constructor for objects of class IDCard
+     * Default constructor for objects of class Billfold
      */
-    public IDCard(String n, String id)
+    public Billfold()
     {
-        super(n);
-        idNumber = id;
+        // initialise instance variables
+        x = 0;
     }
 
     /**
@@ -31,10 +31,10 @@ public class IDCard extends Card
      * @param    y    description of parameter y
      * @return    description of the return value
      */
-    public String format()
+    public int sampleMethod(int y)
     {
         // put your code here
-        return this.format() + "\n" + "ID: " + idNumber;
+        return x+y;
     }
 
 }

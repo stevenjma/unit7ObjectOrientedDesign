@@ -31,10 +31,10 @@ public class DriverLicense extends Card
      * @param    y    description of parameter y
      * @return    description of the return value
      */
-    public int sampleMethod(int y)
+    public String format()
     {
         // put your code here
-        return y;
+        return this.format() + "\n" + "Expiration Year: " + expirationYear;
     }
 
 }
