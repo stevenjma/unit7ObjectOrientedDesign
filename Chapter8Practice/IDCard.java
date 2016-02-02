@@ -34,7 +34,23 @@ public class IDCard extends Card
     public String format()
     {
         // put your code here
-        return this.format() + "\n" + "ID: " + idNumber;
+        return super.format() + "\n" + "ID: " + idNumber;
     }
 
+    public String toString()
+    {
+        return "IDCard[name="+super.getName()+"][number="+idNumber+"]";
+    }
+    
+    public boolean isEquals(IDCard card)
+    {
+       if (super.getName().equals(card.getName()) &&
+            idNumber == card.idNumber){
+           return true;
+       }
+       else
+       {
+           return false;
+       }
+    }
 }

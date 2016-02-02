@@ -36,7 +36,24 @@ public class CallingCard extends Card
     public String format()
     {
         // put your code here
-        return this.format() + "\n" + "ID: " + cardNumber + "\n" + "PIN: " + PIN;
+        return super.format() + "\n" + "ID: " + cardNumber + "\n" + "PIN: " + PIN;
     }
-
+    
+    public String toString()
+    {
+        return "CallingCard[name="+super.getName()+"][number="+cardNumber+",pin="+PIN+"]";
+    }
+ 
+    public boolean isEquals(CallingCard card)
+    {
+       if (super.getName().equals(card.getName()) &&
+            cardNumber == card.cardNumber &&
+            PIN == card.PIN){
+           return true;
+       }
+       else
+       {
+           return false;
+       }
+    }
 }

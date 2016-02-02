@@ -26,4 +26,20 @@
    {
       return "Card holder: " + name;
    }
+   
+   public String toString()
+   {
+       return "Card[name=" + name + "]";
+   }
+   
+   public boolean isEquals(Card card)
+   {
+       if (this.getName().equals(card.getName())){
+           return true;
+       }
+       else
+       {
+           return false;
+       }
+   }
 }
