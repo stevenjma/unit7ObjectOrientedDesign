@@ -58,13 +58,13 @@ public class DriverLicense extends Card
     
     public boolean isEquals(DriverLicense card)
     {
-       if (super.getName().equals(card.getName()) &&
-            expirationYear == card.expirationYear){
-           return true;
-       }
-       else
-       {
-           return false;
-       }
+       if (this.getClass() == card.getClass())
+        {
+            DriverLicense otherCard = (DriverLicense)card;
+            boolean isEqual = super.equals(otherCard);
+            return isEqual && (expirationYear == otherCard.expirationYear);
+        }
+        
+        return false;
     }
 }

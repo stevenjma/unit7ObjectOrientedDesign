@@ -42,15 +42,15 @@ public class IDCard extends Card
         return "IDCard[name="+super.getName()+"][number="+idNumber+"]";
     }
     
-    public boolean isEquals(IDCard card)
+    public boolean equals(Object card)
     {
-       if (super.getName().equals(card.getName()) &&
-            idNumber == card.idNumber){
-           return true;
-       }
-       else
-       {
-           return false;
-       }
+        if (this.getClass() == card.getClass())
+        {
+            IDCard otherIDCard = (IDCard)card;
+            boolean isEqual = super.equals(otherIDCard);
+            return isEqual && idNumber.equals(otherIDCard.idNumber);
+        }
+        
+        return false;
     }
 }

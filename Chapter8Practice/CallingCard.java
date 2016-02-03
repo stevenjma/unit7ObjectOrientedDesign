@@ -44,16 +44,15 @@ public class CallingCard extends Card
         return "CallingCard[name="+super.getName()+"][number="+cardNumber+",pin="+PIN+"]";
     }
  
-    public boolean isEquals(CallingCard card)
+    public boolean isEquals(Object card)
     {
-       if (super.getName().equals(card.getName()) &&
-            cardNumber == card.cardNumber &&
-            PIN == card.PIN){
-           return true;
-       }
-       else
-       {
-           return false;
-       }
+       if (this.getClass() == card.getClass())
+        {
+            CallingCard otherCard = (CallingCard)card;
+            boolean isEqual = super.equals(otherCard);
+            return isEqual && (cardNumber == otherCard.cardNumber) && (PIN == otherCard.PIN);
+        }
+        
+        return false;
     }
 }
