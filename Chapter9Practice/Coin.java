@@ -1,7 +1,9 @@
+import java.util.ArrayList;
+import java.util.Collections;
 /**
    A coin with a monetary value.
 */
-public class Coin
+public class Coin implements Comparable<Coin>
 {
    private double value;
    private String name;
@@ -35,9 +37,12 @@ public class Coin
       return name;
    }
    
-   public int compareTo(Object otherObject)
+   public int compareTo(Coin otherCoin)
    {
-       Coin otherCoin = (Coin) otherObject;
+       
+       /* alternative implementation
+        * return this.value - otherCoin.value;
+        */
        
        if (this.value < otherCoin.value)
        {
@@ -51,5 +56,25 @@ public class Coin
         {
             return 0;
         }
+   }
+   
+   public String toString()
+   {
+       return "Name: " + this.name + " Value: " + this.value;
+   }
+   
+   public static void main (String [] args)
+   {
+       ArrayList<Coin> list = new ArrayList<Coin>();
+       list.add(new Coin(0.10, "dime"));
+       list.add(new Coin(0.25, "quarter"));
+       list.add(new Coin(0.05, "nickel"));
+       list.add(new Coin(0.01, "penny"));
+       
+       System.out.println(list);
+       
+       Collections.sort(list);
+       
+       System.out.println(list);
    }
 }
