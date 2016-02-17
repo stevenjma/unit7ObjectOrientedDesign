@@ -1,5 +1,6 @@
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.geom.Line2D;
 import javax.swing.JComponent;
 import java.awt.Rectangle;
 import java.awt.event.MouseListener;
@@ -10,47 +11,80 @@ import java.awt.event.MouseListener;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class TriangleComponent
+public class TriangleComponent extends JComponent
 {
     /** description of instance variable x (add comment for each instance variable) */
-    private static final int HEIGHT = 1;
-    private static final int WIDTH = 1;
-    
-    private Rectangle point;
+    private int [] x, y;
+    private Line2D.Double line1, line2, line3;
+    private Line2D.Double [] point;
+    private int count = 0;
 
     /**
      * Default constructor for objects of class TraingleGUIComponent
      */
     public TriangleComponent()
     {
-        point = new Rectangle(HEIGHT, WIDTH, 0, 0);
+        x = new int[4];
+        y = new int[4];
+        point = new Line2D.Double[4];
     }
 
     public void paintComponent(Graphics g)
     {
         Graphics2D g2 = (Graphics2D) g;
-        g2.draw(point);
+        if (count == 1){
+            g2.draw(this.point[count]);
+        }
+        else if (count == 0){
+            count++;
+        }
+        else if (count == 2){
+            g2.draw(this.point[count]);
+            g2.draw(line1);
+        }
+        else if (count == 3){
+            g2.draw(this.point[count]);
+            g2.draw(line2);
+            g2.draw(line3);
+        }
+        else{
+        }
     }
     
-    public void paintDot(Graphics g)
+    public void paint(int x, int y)
     {
-        Graphics2D g2 = (Graphics2D) g;
-        g2.draw(point);
-    }
-    
-    public void paintLine(Graphics g, int startpointx, int startpointy, int endpointx, int endpointy)
-    {
-        g.drawLine(startpointx, startpointy, endpointx, endpointy);
-    }
-    
-    public void setLocation(int x, int y)
-    {
-        point.setLocation(x, y);
-    }
-    
-    public static void main (String[] args)
-    {
+        this.x[count] = x;
+        this.y[count] = y;
+        this.point[count] = new Line2D.Double(this.x[count], this.x[count], this.y[count], this.y[count]);
+        if (count == 1)
+        {
+            repaint();
+            count++;
+        }
         
+        else if (count == 2)
+        {
+            line1 = new Line2D.Double(this.x[count - 1], this.x[count], this.y[count - 1], this.y[count]);
+            repaint();
+            count++;
+        }
+        else if (count == 3)
+        {
+            line2 = new Line2D.Double(this.x[count - 1], this.x[count], this.y[count - 1], this.y[count]);
+            line3 = new Line2D.Double(this.x[0], this.x[count], this.y[0], this.y[count]);
+            repaint();
+            count++;
+        }
+        else if (count == 4)
+        {
+            for (int i = 0; i < this.x.length; i++)
+            {
+                this.x[i] = 0;
+                this.y[i] = 0;
+                this.point[i] = new Line2D.Double(0,0,0,0);
+            }
+            repaint();
+            count = 0;
+        }
     }
-
 }

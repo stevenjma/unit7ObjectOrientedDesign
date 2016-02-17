@@ -1,10 +1,6 @@
 import java.awt.event.MouseEvent;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 import java.awt.event.MouseListener;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import javax.swing.JComponent;
 
 public class TriangleFrame extends JFrame
 {
@@ -12,12 +8,12 @@ public class TriangleFrame extends JFrame
     public static final int FRAME_HEIGHT = 400;
     private TriangleComponent component;
     
-    class MousePressListener implements MouseListener
+    class MouseClickListener implements MouseListener
     {
         public void mouseClicked(MouseEvent e)
         {
-            component = new TriangleComponent(e.getX(), e.getY());
-            component.drawPoint();
+            component = new TriangleComponent();
+            component.paint(e.getX(),e.getY());
         }        
         public void mouseExited(MouseEvent e){}
         public void mouseEntered(MouseEvent e){}
