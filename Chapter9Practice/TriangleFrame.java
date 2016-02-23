@@ -5,7 +5,7 @@ import java.awt.event.MouseListener;
 public class TriangleFrame extends JFrame
 {
     public static final int FRAME_WIDTH = 500;
-    public static final int FRAME_HEIGHT = 400;
+    public static final int FRAME_HEIGHT = 500;
     private TriangleComponent component;
     
     class MouseClickListener implements MouseListener
@@ -30,5 +30,6 @@ public class TriangleFrame extends JFrame
         component.addMouseListener(listener);
         
         setSize(FRAME_WIDTH, FRAME_HEIGHT);
+        setTitle("Triangle");
     }
 }

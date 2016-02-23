@@ -2,7 +2,6 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.geom.Line2D;
 import javax.swing.JComponent;
-import java.awt.Rectangle;
 import java.awt.event.MouseListener;
 
 /**
@@ -31,12 +30,12 @@ public class TriangleComponent extends JComponent
 
     public void paintComponent(Graphics g)
     {
+        super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
         if (count == 1){
             g2.draw(this.point[count]);
         }
         else if (count == 0){
-            count++;
         }
         else if (count == 2){
             g2.draw(this.point[count]);
