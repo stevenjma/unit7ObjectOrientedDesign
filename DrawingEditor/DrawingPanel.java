@@ -1,6 +1,6 @@
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseMotionAdapter;
-import java.awt.event.KeyAdapter;
+import java.awt.event.*;
+import java.awt.Color;
+import javax.swing.JPanel;
 
 /**
  * Write a description of class DrawingPanel here.
@@ -8,44 +8,23 @@ import java.awt.event.KeyAdapter;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class DrawingPanel extends MouseAdapter
+public class DrawingPanel extends JPanel
 {
     public DrawingPanel()
     {
-        
+        setBackground(Color.WHITE);
     }
-    public class extender extends MouseMotionAdapter
+    public class extender implements MouseListener, MouseMotionListener, KeyListener
     {
-        public class extender2 extends KeyAdapter
-        {
-            /** description of instance variable x (add comment for each instance variable) */
-            private int x;
-        
-            /**
-             * Default constructor for objects of class DrawingPanel
-             */
-            public DrawingPanel()
-            {
-                // initialise instance variables
-                x = 0;
-            }
-        
-            /**
-             * An example of a method - replace this comment with your own
-             *    that describes the operation of the method
-             *
-             * @pre        preconditions for the method
-             *            (what the method assumes about the method's parameters and class's state)
-             * @post    postconditions for the method
-             *            (what the method guarantees upon completion)
-             * @param    y    description of parameter y
-             * @return    description of the return value
-             */
-            public int sampleMethod(int y)
-            {
-                // put your code here
-                return x+y;
-            }
-        }
+        public void mouseClicked(MouseEvent e) {}
+        public void mousePressed(MouseEvent e) {}
+        public void mouseEntered(MouseEvent e) {}
+        public void mouseExited(MouseEvent e) {}
+        public void mouseReleased(MouseEvent e) {}
+        public void mouseDragged(MouseEvent e) {}
+        public void mouseMoved(MouseEvent e) {}
+        public void keyPressed(KeyEvent e) {}
+        public void keyReleased(KeyEvent e) {}
+        public void keyTyped(KeyEvent e) {}
     }
 }

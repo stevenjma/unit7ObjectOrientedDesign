@@ -19,14 +19,12 @@ public class ControlPanel extends JPanel
     /**
      * Default constructor for objects of class ControlPanel
      */
-    public ControlPanel()
+    public ControlPanel(DrawingPanel canvas)
     {
-        JFrame frame = new JFrame("Drawing Editor");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.add(new JButton("Pick Color"));
-        frame.add(new JFrame(canvas.getColor()));
-        frame.add(new JButton("Add Circle"));
-        frame.add(new JButton("Add Square"));
+        add(new JButton("Pick Color"));
+        //add(new JPanel(canvas.getColor()));
+        add(new JButton("Add Circle"));
+        add(new JButton("Add Square"));
     }
 
     public class ClickListener implements ActionListener

@@ -1,5 +1,6 @@
-import java.awt.geom.Point2D.Double;
+import java.awt.geom.Point2D;
 import java.awt.Color;
+import java.awt.Graphics2D;
 
 /**
  * Write a description of abstract class Shape here.
@@ -10,7 +11,7 @@ import java.awt.Color;
 public abstract class Shape
 {
     /** description of instance variable x (add comment for each instance variable) */
-    private Point2D.Double center;
+    private Point2D center;
     private double radius;
     private Color color;
 
@@ -51,15 +52,14 @@ public abstract class Shape
      * @param    y    description of parameter y
      * @return    description of the return value
      */
-    public int[] getCenter()
+    public double[] getCenter()
     {
-        return new int[] {center.getX(), center.getY()};
+        return new double[] {center.getX(), center.getY()};
     }
 
     public void move(double x, double y)
     {
-        this.center.x = x;
-        this.center.y = y;
+        center = new Point2D.Double(x, y);
     }
     
     public void setRadius(double r)
@@ -69,10 +69,12 @@ public abstract class Shape
     
     public boolean isInside(Point2D.Double point)
     {
+        return true;
     }
     
     public boolean isOnBorder(Point2D.Double point)
     {
+        return true;
     }
     
     public void draw(Graphics2D g2, boolean filled)
