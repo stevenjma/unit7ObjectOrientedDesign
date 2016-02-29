@@ -13,16 +13,16 @@ import java.awt.event.ActionEvent;
  */
 public class ControlPanel extends JPanel
 {
-    /** description of instance variable x (add comment for each instance variable) */
-    private int x;
 
     /**
      * Default constructor for objects of class ControlPanel
      */
     public ControlPanel(DrawingPanel canvas)
     {
+        JPanel panel = new JPanel();
         add(new JButton("Pick Color"));
-        //add(new JPanel(canvas.getColor()));
+        add(panel);
+        panel.setBackground(canvas.getColor());
         add(new JButton("Add Circle"));
         add(new JButton("Add Square"));
     }
@@ -31,7 +31,13 @@ public class ControlPanel extends JPanel
     {
         public void actionPerformed(ActionEvent e)
         {
-            
+            if (e.getActionCommand().equals("Pick Color")){
+                
+            }
+            else if (e.getActionCommand().equals("Add Circle")){
+            }
+            else{
+            }
         }
     }
 }

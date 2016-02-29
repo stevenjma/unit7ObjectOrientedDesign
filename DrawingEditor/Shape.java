@@ -67,17 +67,12 @@ public abstract class Shape
         radius = r;
     }
     
-    public boolean isInside(Point2D.Double point)
+    public abstract boolean isInside(Point2D.Double point);
+    
+    /*public boolean isOnBorder(Point2D.Double point)
     {
         return true;
     }
-    
-    public boolean isOnBorder(Point2D.Double point)
-    {
-        return true;
-    }
-    
-    public void draw(Graphics2D g2, boolean filled)
-    {
-    }
+    */
+    public abstract void draw(Graphics2D g2, boolean filled);
 }
