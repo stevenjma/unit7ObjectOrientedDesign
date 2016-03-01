@@ -14,6 +14,7 @@ import java.awt.geom.Ellipse2D;
 public class Circle extends Shape
 {
     Ellipse2D.Double circle;
+    Color color;
     
     /**
      * Default constructor for objects of class Circle
@@ -21,11 +22,13 @@ public class Circle extends Shape
     public Circle(Point2D.Double center, double radius, Color color)
     {
         super(center, radius, color);
+        this.color = color;
         circle = new Ellipse2D.Double(radius, radius, center.getX(), center.getY());
     }
 
     public void draw(Graphics2D g2, boolean filled)
     {
+        g2.setColor(color);
         g2.draw(circle);
         if (filled)
         {

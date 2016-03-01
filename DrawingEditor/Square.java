@@ -13,15 +13,18 @@ import java.awt.Rectangle;
 public class Square extends Shape
 {
     Rectangle square;
+    Color color;
 
     public Square(Point2D.Double center, double radius, Color color)
     {
         super(center, radius, color);
+        this.color = color;
         square = new Rectangle((int)radius, (int)radius, (int)center.getX(), (int)center.getY());
     }
 
     public void draw(Graphics2D g2, boolean filled)
     {
+        g2.setColor(color);
         g2.draw(square);
         if (filled)
         {

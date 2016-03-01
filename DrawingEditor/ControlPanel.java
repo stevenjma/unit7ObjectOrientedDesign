@@ -14,15 +14,15 @@ import java.awt.event.*;
 public class ControlPanel extends JPanel
 {
     DrawingPanel canvas;
+    JPanel panel = new JPanel();
 
     /**
      * Default constructor for objects of class ControlPanel
      */
     public ControlPanel(DrawingPanel canvas)
     {
-        JPanel panel = new JPanel();
         ClickListener listener = new ClickListener();
-        JButton color = new JButton("Pick color");
+        JButton color = new JButton("Pick Color");
         JButton circle = new JButton("Add Circle");
         JButton square = new JButton("Add Square");
         color.addActionListener(listener);
@@ -43,7 +43,7 @@ public class ControlPanel extends JPanel
         {
             if (e.getActionCommand().equals("Pick Color")){
                 canvas.pickColor();
-                canvas.getColor();
+                panel.setBackground(canvas.getColor());
             }
             else if (e.getActionCommand().equals("Add Circle")){
                 canvas.addCircle();

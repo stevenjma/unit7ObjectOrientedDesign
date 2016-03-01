@@ -62,7 +62,7 @@ public class DrawingPanel extends JPanel
     {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
-        for (int i = list.size() - 1; i >= 0; i--)
+        for (int i =0; i < list.size(); i++)
         {
             list.get(i).draw(g2, true);
         }
