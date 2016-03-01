@@ -6,6 +6,9 @@ import javax.swing.JColorChooser;
 import java.util.ArrayList;
 import java.awt.Graphics;
 import java.awt.geom.Point2D;
+import java.awt.Graphics2D;
+import java.awt.Rectangle;
+import java.awt.geom.Ellipse2D;
 
 /**
  * Write a description of class DrawingPanel here.
@@ -15,14 +18,13 @@ import java.awt.geom.Point2D;
  */
 public class DrawingPanel extends JPanel
 {
-    private Color color = Color.WHITE;
+    private Color color = Color.RED;
     ArrayList<Shape> list = new ArrayList<Shape>();
     Point2D.Double point = new Point2D.Double(200, 200);
-    Shape activeshape;
     
     public DrawingPanel()
     {
-        setBackground(color);
+        setBackground(Color.WHITE);
     }
     
     public Color getColor()
@@ -39,25 +41,31 @@ public class DrawingPanel extends JPanel
     {
         JColorChooser chooser = new JColorChooser();
         Color thing = chooser.showDialog(this, "Select a Color", color);
-        setBackground(thing);
+        color = thing;
     }
     
     public void addCircle()
     {
         Circle circle = new Circle(point, 50, getColor());
         list.add(circle);
-        activeshape = circle;
+        repaint();
     }
     
     public void addSquare()
     {
         Square square = new Square(point, 50, getColor());
         list.add(square);
-        activeshape = square;
+        repaint();
     }
     
     public void paintComponent(Graphics g)
     {
+        super.paintComponent(g);
+        Graphics2D g2 = (Graphics2D) g;
+        for (int i = list.size() - 1; i >= 0; i--)
+        {
+            list.get(i).draw(g2, true);
+        }
     }
     
     public class extender implements MouseListener, MouseMotionListener, KeyListener

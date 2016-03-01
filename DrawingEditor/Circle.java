@@ -21,7 +21,7 @@ public class Circle extends Shape
     public Circle(Point2D.Double center, double radius, Color color)
     {
         super(center, radius, color);
-        circle = new Ellipse2D.Double(50, 50, center.getX(), center.getY());
+        circle = new Ellipse2D.Double(radius, radius, center.getX(), center.getY());
     }
 
     public void draw(Graphics2D g2, boolean filled)
