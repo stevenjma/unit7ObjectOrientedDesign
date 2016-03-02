@@ -18,13 +18,22 @@ import java.awt.geom.Ellipse2D;
  */
 public class DrawingPanel extends JPanel
 {
-    private Color color = Color.RED;
-    ArrayList<Shape> list = new ArrayList<Shape>();
-    Point2D.Double point = new Point2D.Double(200, 200);
+    private Color color;
+    ArrayList<Shape> list;
+    Point2D.Double point;
+    private boolean isPressed;
+    private boolean isNotClicked;
     
     public DrawingPanel()
     {
         setBackground(Color.WHITE);
+        addMouseListener(new extender());
+        addMouseMotionListener(new extender());
+        color = Color.RED;
+        list = new ArrayList<Shape>();
+        point = new Point2D.Double(200, 200);
+        isPressed = false;;
+        isNotClicked = true;
     }
     
     public Color getColor()
@@ -62,20 +71,52 @@ public class DrawingPanel extends JPanel
     {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
-        for (int i =0; i < list.size(); i++)
+        for (int i = 0; i < list.size(); i++)
         {
-            list.get(i).draw(g2, true);
+            if (i == list.size() - 1)
+            {
+                list.get(i).draw(g2, isNotClicked);
+            }
+            else
+            {
+                list.get(i).draw(g2, true);
+            }
         }
     }
     
     public class extender implements MouseListener, MouseMotionListener, KeyListener
     {
-        public void mouseClicked(MouseEvent e) {}
-        public void mousePressed(MouseEvent e) {}
+        private int clickerCount = 0;
+        public void mouseClicked(MouseEvent e) {
+            if (list.get(0).isInside(new Point2D.Double(e.getX(),e.getY()))){
+                isPressed = true;
+                if (clickerCount == 0)
+                {
+                    isNotClicked = false;
+                    clickerCount++;
+                }
+                else
+                {
+                    isNotClicked = true;
+                    clickerCount = 0;
+                }
+            }
+            repaint();
+        }
+        public void mousePressed(MouseEvent e) {
+            isPressed = true;
+        }
         public void mouseEntered(MouseEvent e) {}
         public void mouseExited(MouseEvent e) {}
-        public void mouseReleased(MouseEvent e) {}
-        public void mouseDragged(MouseEvent e) {}
+        public void mouseReleased(MouseEvent e) {
+            isPressed = false;
+        }
+        public void mouseDragged(MouseEvent e) {
+            if (isPressed){
+                list.get(list.size() - 1).move(e.getX(), e.getY());
+            }
+            repaint();
+        }
         public void mouseMoved(MouseEvent e) {}
         public void keyPressed(KeyEvent e) {}
         public void keyReleased(KeyEvent e) {}
