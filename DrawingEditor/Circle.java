@@ -15,6 +15,7 @@ public class Circle extends Shape
 {
     Ellipse2D.Double circle;
     Color color;
+    double radius;
     
     /**
      * Default constructor for objects of class Circle
@@ -23,7 +24,8 @@ public class Circle extends Shape
     {
         super(center, radius, color);
         this.color = color;
-        circle = new Ellipse2D.Double(radius, radius, center.getX(), center.getY());
+        this.radius = radius;
+        circle = new Ellipse2D.Double(center.getX(), center.getY(), radius, radius);
     }
 
     public void draw(Graphics2D g2, boolean filled)
@@ -39,5 +41,11 @@ public class Circle extends Shape
     public boolean isInside(Point2D.Double point)
     {
         return true;
+    }
+    
+    public void move(double x, double y)
+    {
+        super.move(x,y);
+        circle = new Ellipse2D.Double(x, y, radius, radius);
     }
 }

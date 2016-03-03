@@ -14,12 +14,14 @@ public class Square extends Shape
 {
     Rectangle square;
     Color color;
+    int radius;
 
     public Square(Point2D.Double center, double radius, Color color)
     {
         super(center, radius, color);
         this.color = color;
-        square = new Rectangle((int)radius, (int)radius, (int)center.getX(), (int)center.getY());
+        this.radius = (int)radius;
+        square = new Rectangle((int)center.getX(), (int)center.getY(), this.radius, this.radius);
     }
 
     public void draw(Graphics2D g2, boolean filled)
@@ -37,4 +39,9 @@ public class Square extends Shape
         return true;
     }
 
+    public void move(double x, double y)
+    {
+        super.move(x,y);
+        square = new Rectangle((int)x, (int)y, radius, radius);
+    }
 }
