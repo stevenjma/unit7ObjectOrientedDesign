@@ -24,6 +24,10 @@ public class Circle extends Shape
     public Circle(Point2D.Double center, double width, double height, Color color)
     {
         super(center, width, height, color);
+        this.width = width;
+        this.height = height;
+        this.color = color;
+        this.color = color;
         circle = new Ellipse2D.Double(center.getX(), center.getY(), width, height);
     }
 

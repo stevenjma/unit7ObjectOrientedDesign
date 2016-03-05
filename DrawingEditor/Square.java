@@ -20,6 +20,9 @@ public class Square extends Shape
     public Square(Point2D.Double center, double width, double height, Color color)
     {
         super(center, width, height, color);
+        this.width = (int)width;
+        this.height = (int)height;
+        this.color = color;
         square = new Rectangle((int)center.getX(), (int)center.getY(), this.width, this.height);
     }
 
