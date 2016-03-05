@@ -12,17 +12,21 @@ public abstract class Shape
 {
     /** description of instance variable x (add comment for each instance variable) */
     private Point2D center;
-    private double radius;
     private Color color;
+    private double width;
+    private double height;
 
     /**
      * Default constructor for objects of class Shape
      */
-    public Shape(Point2D.Double center, double radius, Color color)
+    public Shape(Point2D.Double center, double width, double height, Color color)
     {
         this.center = center;
-        this.radius = radius;
+        this.width = width;
+        this.height = height;
         this.color = color;
+        width = 50;
+        height = 50;
     }
     
     /**
@@ -36,9 +40,24 @@ public abstract class Shape
      * @param    y    description of parameter y
      * @return    description of the return value
      */
-    public double getRadius()
+    public double getWidth()
     {
-        return radius;
+        return width;
+    }
+    
+    public double getHeight()
+    {
+        return height;
+    }
+    
+    public double getX()
+    {
+        return center.getX();
+    }
+    
+    public double getY()
+    {
+        return center.getY();
     }
 
     /**
@@ -62,9 +81,10 @@ public abstract class Shape
         center = new Point2D.Double(x, y);
     }
     
-    public void setRadius(double r)
+    public void resize(double x, double y)
     {
-        radius = r;
+        width = x;
+        height = y;
     }
     
     public abstract boolean isInside(Point2D.Double point);

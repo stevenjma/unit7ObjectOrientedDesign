@@ -15,17 +15,16 @@ public class Circle extends Shape
 {
     Ellipse2D.Double circle;
     Color color;
-    double radius;
+    private double width;
+    private double height;
     
     /**
      * Default constructor for objects of class Circle
      */
-    public Circle(Point2D.Double center, double radius, Color color)
+    public Circle(Point2D.Double center, double width, double height, Color color)
     {
-        super(center, radius, color);
-        this.color = color;
-        this.radius = radius;
-        circle = new Ellipse2D.Double(center.getX(), center.getY(), radius, radius);
+        super(center, width, height, color);
+        circle = new Ellipse2D.Double(center.getX(), center.getY(), width, height);
     }
 
     public void draw(Graphics2D g2, boolean filled)
@@ -40,12 +39,18 @@ public class Circle extends Shape
 
     public boolean isInside(Point2D.Double point)
     {
-        return true;
+        return circle.contains(point.getX(), point.getY());
     }
     
     public void move(double x, double y)
     {
         super.move(x,y);
-        circle = new Ellipse2D.Double(x, y, radius, radius);
+        circle = new Ellipse2D.Double(x, y, width, height);
+    }
+    
+    public void resize(double x, double y)
+    {
+        super.resize(x, y);
+        circle = new Ellipse2D.Double(circle.getX(), circle.getY(), x, y);
     }
 }

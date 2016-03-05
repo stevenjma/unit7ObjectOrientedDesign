@@ -14,14 +14,13 @@ public class Square extends Shape
 {
     Rectangle square;
     Color color;
-    int radius;
+    private int width;
+    private int height;
 
-    public Square(Point2D.Double center, double radius, Color color)
+    public Square(Point2D.Double center, double width, double height, Color color)
     {
-        super(center, radius, color);
-        this.color = color;
-        this.radius = (int)radius;
-        square = new Rectangle((int)center.getX(), (int)center.getY(), this.radius, this.radius);
+        super(center, width, height, color);
+        square = new Rectangle((int)center.getX(), (int)center.getY(), this.width, this.height);
     }
 
     public void draw(Graphics2D g2, boolean filled)
@@ -36,12 +35,18 @@ public class Square extends Shape
 
     public boolean isInside(Point2D.Double point)
     {
-        return true;
+        return square.contains((int)point.getX(), (int)point.getY());
     }
 
     public void move(double x, double y)
     {
         super.move(x,y);
-        square = new Rectangle((int)x, (int)y, radius, radius);
+        square = new Rectangle((int)x, (int)y, width, height);
+    }
+    
+    public void resize(double x, double y)
+    {
+        super.resize(x, y);
+        square = new Rectangle((int)square.getX(), (int)square.getY(), (int)x, (int)y);
     }
 }

@@ -25,15 +25,18 @@ public class ControlPanel extends JPanel
         JButton color = new JButton("Pick Color");
         JButton circle = new JButton("Add Circle");
         JButton square = new JButton("Add Square");
+        JButton mode = new JButton("Switch Modes");
         color.addActionListener(listener);
         circle.addActionListener(listener);
         square.addActionListener(listener);
+        mode.addActionListener(listener);
         add(color);
         add(panel);
         this.canvas = canvas;
         panel.setBackground(this.canvas.getColor());
         add(circle);
         add(square);
+        add(mode);
         
     }
 
@@ -48,8 +51,11 @@ public class ControlPanel extends JPanel
             else if (e.getActionCommand().equals("Add Circle")){
                 canvas.addCircle();
             }
-            else{
+            else if (e.getActionCommand().equals("Add Square")){
                 canvas.addSquare();
+            }
+            else if (e.getActionCommand().equals("Switch Modes")){
+                canvas.switchModes();
             }
         }
     }
